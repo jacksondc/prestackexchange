@@ -1,0 +1,8 @@
+<template name="questions">
+  <h3>questions: </h3>
+  <ul>
+    {{#each questions}}
+      <li><a href="{{pathFor "question"}}">{{title}}</a></li>
+    {{/each}}
+  </ul>
+</template>

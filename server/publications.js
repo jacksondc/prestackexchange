@@ -2,18 +2,18 @@
 
 ## Publications ##
 
-All publications-related code. 
+All publications-related code.
 
 /+ ---------------------------------------------------- */
 
-// Publish all items
+// Publish all questions
 
-Meteor.publish('allItems', function() {
-  return Items.find();
+Meteor.publish('allQuestions', function() {
+  return Questions.find();
 });
 
-// Publish a single item
+// Publish a single question
 
-Meteor.publish('singleItem', function(id) {
-  return Items.find(id);
+Meteor.publish('singleQuestion', function(id) {
+  return Questions.find(id);
 });

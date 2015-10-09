@@ -18,46 +18,42 @@ Router.configure({
 
 var filters = {
 
-  myFilter: function () {
-    // do something
-  },
-
   isLoggedIn: function() {
     if (!(Meteor.loggingIn() || Meteor.user())) {
       alert('Please Log In First.')
       this.stop();
+    } else {
+      this.next();
     }
   }
 
 }
 
-Router.onBeforeAction(filters.myFilter, {only: ['items']});
-
 // Routes
 
 Router.map(function() {
 
-  // Items
+  // Questions
 
-  this.route('items', {
+  this.route('questions', {
     waitOn: function () {
-      return Meteor.subscribe('allItems');
+      return Meteor.subscribe('allQuestions');
     },
     data: function () {
       return {
-        items: Items.find()
+        questions: Questions.find()
       }
     }
   });
 
-  this.route('item', {
-    path: '/items/:_id',
+  this.route('question', {
+    path: '/questions/:_id',
     waitOn: function () {
-      return Meteor.subscribe('singleItem', this.params._id);
+      return Meteor.subscribe('singleQuestion', this.params._id);
     },
     data: function () {
       return {
-        item: Items.findOne(this.params._id)
+        question: Questions.findOne(this.params._id)
       }
     }
   });
